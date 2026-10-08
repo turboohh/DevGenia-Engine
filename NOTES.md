@@ -1,41 +1,40 @@
-DEVGENIA 0.14.4 — INVENTORY AND SERVICE ORGANIZATION
+DEVGENIA 0.14.5 — CAMERA, CONTROLS AND ONLINE RESPONSIVENESS
 
-Explorer groups service roots in a stable order: world/player settings, shared and
-server assets, scripts and player startup, then UI/input/media and engine tools.
-All service icons use the same light-blue color. Ordinary instance colors remain
-distinct, and service IDs and project references are unchanged.
+Follow and ThirdPerson cameras now focus toward the character's head, using the
+stable body collider rather than animated head motion. The offset scales with the
+character and retains creator camera offsets, wall avoidance and first-person
+behavior. Studio Play, desktop Player and the mobile browser use the same focus.
 
-During Play, press backtick (`), the key usually above Tab, to open or close your
-inventory. It uses the shared Inventory input action, so creators can rebind it.
-The default inventory has 24 total slots: nine hotbar slots and 15 extra slots.
-Creators can change Inventory Capacity and the Hotbar's NumberOfSlots. Larger
-inventories have pages; the maximum remains 120 slots.
+All service names and icons in Explorer now use the same light blue, including
+CoreService, SharedStorage, ServerStorage and StarterInventory. Ordinary instance
+colors remain distinct.
 
-With the inventory open, drag an item between a hotbar slot and an inventory slot.
-You can also click the source item and then its destination. Occupied destinations
-swap their items. Only your own current slots can be changed; stale, repeated or
-invalid requests cannot create items. Closing with Escape restores gameplay before
-the next Escape opens the player menu. First-person mouse capture releases while
-the inventory is open. Chat and other text fields retain normal text input.
+Settings and Report selectors, Studio selectors and dialog buttons use the same
+flat dark appearance. Hover, pressed, disabled, selected and keyboard-focus states
+remain visible. Keyboard navigation, Enter/Escape and default dialog actions keep
+their existing behavior.
 
-The inventory panel uses ordinary DevGenia UI instances, alongside the existing
-ordinary-UI hotbar. Server-authoritative inventory contents are separate from the
-local open/closed panel, mouse gestures and pagination.
+Online updates retain server authority for movement validation, damage, inventory
+and saves. Local-script presentation is updated at the server's normal simulation
+cadence instead of repeating full local-world work for each high-FPS movement
+command. Authoritative movement substeps and their acknowledgements remain exact.
 
-To save the player's inventory and slot order between visits:
-1. Insert an Inventory under StarterInventory, or select the existing one.
-2. Enable "Save inventory" and choose a stable "Save key" (normally main).
-3. Keep Gear/ItemDefinition IDs stable after publishing.
-4. For Studio tests, also enable "Keep local test data between Play sessions" in
-   View -> Data Inspector before starting Play. Otherwise Stop discards test saves.
+The broker validates and sanitizes all incoming worker snapshots, then only builds
+the shared outgoing snapshot when a player actually needs it. Private player views
+remain separated. Native Player negotiates fast gzip for large HTTP frames; old
+clients keep their original response format. Both compressed and expanded bodies
+retain the same size limits, and malformed compressed responses fail closed.
 
-The shared DataService saves item IDs, quantities and exact slot positions,
-including holes and separate stacks. It stores no character models or transient
-gear instance IDs. Saving remains opt-in and unchanged values cause no new writes.
-Existing version-1 aggregate saves load and migrate to the version-2 ordered form.
-Unknown items, corrupted saves and insufficient save capacity are rejected without
-overwriting the existing save or partly changing the inventory.
+Project serialization reuses bounded metadata and streams XML without building an
+extra document tree. Read-only physics, replication and local prediction queries
+reuse hierarchy indexes within their operation, without retaining stale indexes
+across script callbacks or hierarchy changes.
 
-Operator note: after version-2 inventory saves exist, downgrading the server to
-0.14.3 cannot read those ordered saves. Retain a compatible engine for subsequent
-rollbacks; never rewind live player data merely to downgrade an executable.
+Compatible servers advertise a serial 40 ms polling cadence: processing and
+transfer time count toward that interval instead of adding another 40 ms after
+every response. Legacy servers retain the previous pacing. Server admission uses
+a bounded per-session request budget before simulation-lock waits; authoritative
+movement time and action validation remain unchanged.
+
+Project format 12 and play protocol 10 remain unchanged. Existing projects and
+player data do not need conversion for this release.
