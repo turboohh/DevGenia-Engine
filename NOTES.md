@@ -1,33 +1,31 @@
-# DevGenia 0.9 — create, test and improve together
+# DevGenia 0.10 — Core, live Studio and mobile browser play
 
-## Start with a playable game
+## Player and Studio presentation
 
-**Help → Build your first game** guides you through the editable **Power Cell Run** example. Change its collectible rewards and vault door, run Play, collect a cell and check the project before publishing. The steps respond to actual editor/game state.
+- Heart `damageFeedback` controls a fading red screen vignette. Only the local character's actual health loss triggers it; spawn, healing and other players do not.
+- Fixed Windows timer pacing, enabled the bundled GPU renderer by default when available, and reused GPU readback buffers. Software rendering remains the fallback.
+- Standalone camera input uses acknowledgement sequences so a stale worker frame cannot undo the latest mouse look. Studio simulation advances at 60 Hz independently of the display FPS setting; detached poses interpolate for presentation.
+- Fixed a near-zero normal comparison that could flip flat avatar-face lighting while walking.
+- Unlimited, 30, 60, 90, 120, 144, 165 and 240 FPS options. Unlimited removes the display cap; available hardware and scene complexity still determine achieved FPS.
+- Refined chat controls and dark channel selector. Removed the persistent bottom-left viewport controls badge and the normal connected Player status strip; disconnect/error messages remain available.
+- Menu and leaderboard motion use elapsed time with smooth reversals and respect Reduce motion.
 
-Insert **Door, Collectible, Damage Zone, Quest and Round Manager** components through Explorer. Their Properties configure interaction, rewards, objectives and rounds without rebuilding these systems in every project. Java remains the scripting language. See [Creator kits](CREATOR_KITS.md).
+## Building workflows
 
-## Keep imported appearance and choose real collision shapes
+- Double-click a script identifier or select text to highlight its matching occurrences without replacing the Ctrl+F query.
+- Ctrl+G groups eligible selected roots, preserves world transforms, skips services, and supports one-step Undo. Script-only services use a Folder where a Model is invalid.
+- Left-drag empty space, or drag with Select, to box-select visible Parts fully inside the rectangle. Ctrl adds to selection. Models are selected as a whole; Alt selects individual Parts; Ctrl+Alt combines both behaviors. The oversized ground beneath a box does not become selected accidentally.
+- File → Open shared project → Join live session joins the saved working draft. Authorized developers share scene and script changes, selection/presence and moving camera markers. Publishing remains explicit.
+- Nonoverlapping edits merge. A conflicting edit pauses synchronization and preserves the local copy; it does not silently overwrite another developer's code. Stop playtesting or finish a property/transform edit to apply queued shared changes.
 
-glTF/GLB imports preserve separate material surfaces, base colors, PNG/JPEG textures, opacity and wrapping. Part Physics now offers Box, Sphere, Capsule and editable Compound colliders, with a wireframe preview. Both rendering backends support imported alpha. See [Materials and colliders](MODEL_IMPORT_AND_COLLIDERS.md).
+## Mobile and server capacity
 
-## Check a draft before releasing it
+- Game pages offer Play in browser, with WebGL rendering, touch movement/look/jump, chat, GUI buttons, menu, reset and reconnect. Guests and signed-in users share the existing authoritative server.
+- Mobile is an initial browser/PWA client. Native App Store/Google Play packages are not included. Desktop particle/audio/rendering parity and desktop movement prediction are not yet part of the mobile client; see MOBILE_PLAYER.md before marking a game fully mobile compatible.
+- Players → Max players sets 1–8 for each saved game revision. The operator can impose a lower ceiling. Normal joins, parties, reservations, queues and server lists use the same frozen room capacity. Existing cloud room limits remain unchanged.
 
-**File → Publish → Check project** checks scripts, Spawn and component configuration, and project/network size. Errors block release; unfinished work can still be saved as a private draft.
+## Verification
 
-On the website, open **Creator workspace → Manage project** to invite registered testers to one exact revision. They can play and submit categorized feedback. Owners can end a test or remove a tester. Private playtests remain separate from public discovery and saved player progress.
+The release is checked with isolated Java unit/integration tests, actual Swing gestures and script runtime, native OpenGL rendering, two live Studio clients, browser-cookie authorization, actual mobile-browser touch input, and the packaged Windows launchers. Existing accounts, publications, uploads and server configuration are preserved during deployment.
 
-## Share a project safely
-
-Owners grant **Edit**, **Play drafts** and **Publish** independently. **File → Open shared project** opens editable projects in Studio. Each upload makes an immutable revision; a stale upload is rejected and leaves local work intact. History includes authors, and authorized publishers can release or roll back a saved revision. See [Shared projects](SHARED_PROJECTS.md).
-
-## Learn from real play
-
-Game owners get a dashboard with successful joins, failed launches, session length, returning visits, server preparation time and server-interrupted sessions, filtered by version. Server Scripts can mark milestones such as completing a tutorial. Private tests do not inflate these measurements. See [Creator analytics](CREATOR_ANALYTICS.md).
-
-Discover adds **Continue playing**, **Friends are playing**, **Updates to your favorites** and administrator-selected **Featured worlds** when matching content exists. Friend presence and private history retain their privacy rules.
-
-## Compatibility and practical scope
-
-Install the new **DevGeniaSetup.exe** for these Studio/Player features. Existing projects and account data remain supported. Scenes using the new gameplay or collision/material fields use format 7; older Players receive an explicit update message. Game-content updates still load from the platform without reinstalling for each game revision.
-
-This release provides saved-revision collaboration, not simultaneous live co-editing or automatic merging. Model import is static; skeletal animation import and full PBR maps remain future work. Analytics does not claim device FPS, client crashes or end-to-end loading time. Existing server capacity limits remain in force.
+See CLIENT_PRESENTATION.md, LIVE_STUDIO.md and MOBILE_PLAYER.md for details and current limits.
