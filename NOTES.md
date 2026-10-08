@@ -1,23 +1,84 @@
-# DevGenia 0.11.1 — Large-window rendering and fullscreen
+# DevGenia 0.12.0 — Direct GPU presentation
 
-Player and Studio playtests now combine the sky, celestial bodies and transparent world geometry on the GPU before returning an opaque RGB image to Swing. The previous path copied a transparent frame back to the CPU and scaled/blended it over a full-window background. That extra alpha-compositing work grew with window size. Native output is still from the current camera frame, with no previous-frame readback or extra input delay. Resolution budgets, quality settings, simulation, prediction and the FPS cap are unchanged. HUD text remains at native window resolution. Celestial edge antialiasing can differ slightly from the old Java2D circles.
+The Windows Player and Studio playtest can now present the 3D world directly through
+an OpenGL Canvas. World frames stay on the GPU: there is no `glReadPixels`, CPU row
+flip or full-world Swing upload in the new presentation path. The current geometry,
+materials, lighting, quality budgets, simulation and movement prediction are retained.
 
-Editor rendering retains its transparent surface and pick buffer. Mirrors/software rendering retain their existing background/compositing path. A failed native frame now preserves the complete presentation cache while rendering its software fallback, rather than discarding the cache mid-paint.
+The actual Swing chat, game UI and Escape menu remain in the same window and keep
+their existing state and input handling. Their transparent appearance is captured
+once per requested frame and composited on the GPU. Text input retains its live
+caret; mouse, scrolling, drag capture, tooltips and context menus reach the original
+controls. This does not introduce a queued or delayed world frame.
 
-F11 toggles borderless fullscreen in standalone Player, online/LAN Player and Studio. The same component tree, runtime, connection and GPU context remain active. Returning restores normal/maximized bounds and focus. Held keys are released during the transition, repeated F11 presses from key-repeat are ignored, and Escape continues to open the game menu.
+Native context creation, rendering and cleanup stay on the event thread in this
+release. That keeps the current mutable scene and UI ownership intact. F11 recreates
+only the native drawing context when the Canvas peer changes; the game session,
+connection, editor document and controls continue. Hidden or minimized native
+surfaces do not generate rendered-frame counts. The existing presentation clock
+still controls frame limits, and FPS measurements count completed native swaps.
+
+Settings now include a persisted renderer choice and a compatibility recovery option.
+For this first rollout, **Automatic keeps the established renderer**. Enable the new
+path explicitly in **Escape → Settings → Renderer → Native GPU (experimental)**;
+choose **Compatibility** to switch back without restarting the game. Native results
+have been verified on the available Windows/NVIDIA machine, not across all vendors.
+The existing editor renderer remains responsible for authoring and local play-edit
+tools. Unsupported native features and recoverable initialization/draw failures
+restore the established renderer. See [NATIVE_VIEWPORT.md](NATIVE_VIEWPORT.md) for
+dependencies, developer commands and recovery instructions.
 
 ## Validation
 
-- 188 native background checks: day/night, logical-pixel sun/moon projection, glass and texture alpha, depth, particles, editor/play transitions, resize, clearing, native failure and software recovery.
-- 118 native fullscreen checks: active render clock and runtime ticks, first-person capture, visible Escape menu, preserved OpenGL context, F11 repeat protection, window bounds, and close/disconnect lifecycle. Physical monitor removal was covered by geometry fixtures, not every hardware/DPI configuration.
-- Existing renderer, quality/picking, alpha, presentation and workflow suites passed, including 62 real-window FPS-cap checks. The code was compiled for Java 17.
-- Complete Player offscreen paint on this GTX 1650: 720p median 13.88→12.16 ms; 1080p 22.99→14.44 ms. These are render timings, not measured on-screen FPS.
-- In a quiet, visible rotating-camera test at Medium/Unlimited, a 640×360 viewport measured 124.9→130.8 FPS and a maximized 1920×971 viewport 41.6→44.0 FPS. An earlier 27.8→42.7 FPS result coincided with compilation and is not used as a reliable improvement claim. GPU readback and window presentation still constrain large-window throughput; this release does not guarantee 60 FPS on every configuration.
-- Disabling the Java2D D3D path reduced maximized performance to 35.7 FPS. Temporary whole-interface RGB composition and direct raw-frame presentation also gave no improvement; these experiments were not shipped. JFR identified remaining readback, upload and presentation costs.
-- The isolated Windows installer passed 116 install/launch/upgrade/repair/uninstall checks, including preserved user projects and unchanged production file/URL associations. A packaged client downloaded and verified the public HTTPS release with its pinned Ed25519 key and SHA-256. The normal website download was independently checked against the same installer.
+- Java 17 compilation remains possible without compile-time LWJGL dependencies in
+  core. The optional native bridge is built separately against each package's fresh
+  core, with pinned LWJGL/JAWT dependencies and license notices.
+- Existing rendering tests passed: 188 GPU background, 16 compositing, 21 quality,
+  15 transition, 39 presentation, 20 texture-alpha and 9 imported-material checks.
+- Native checks include renderer preference persistence, real Swing HUD input and
+  caret, native context lifecycle, fullscreen reparenting and compatibility fallback.
+- 199 preference checks, 31 retained-HUD input checks, and 42 native surface checks
+  passed. Another 55 checks cover the actual Studio, Player and MultiplayerWindow
+  hosts. Surface and host suites also passed at forced 150% Java DPI scaling, with
+  screenshots confirming world pixels, text and premultiplied HUD transparency.
+  The multiplayer host used an isolated local GameClient fixture; this is not a new
+  production network load test. Mixed-DPI monitor hot-plug and other GPU vendors
+  have not been separately verified.
+- Final visible Player comparison on a GTX 1650, Medium/Unlimited, rotating
+  camera and the same starter scene: 640×360 measured 145.6 → 167.9 FPS; maximized
+  1920×971 measured 45.3 → 74.9 FPS; F11's 1920×1034 viewport measured 40.3 → 83.0
+  FPS. Each measured sample lasted four seconds after warmup, without concurrent
+  compilation or GPU tests. These are local measurements, not promises for every
+  GPU, game, resolution or driver. Earlier runs and full raw output are retained.
 
-The desktop-only release replaces the public installer and signed update metadata without restarting the platform or migrating account/game data. Install the desktop update to receive these changes; an already-running older executable cannot load them.
+The full-window transparent-JWindow prototype was rejected after its HUD updates
+introduced substantial presentation overhead. The shipped approach retains the HUD
+hierarchy in the original window and composites the captured HUD on the GPU.
 
-Published installer: 40,788,578 bytes; SHA-256 `560a1bac3271d6f6383f856aff9309feadf1e9d73519fe93b585cff0a3adf250`. The live server JAR was not replaced.
+
+## Published release
+
+The isolated Windows installer passed **121 assertions**, including installed Studio
+and Player startup, native dependencies resolved through the actual packaged
+manifest, repair/uninstall protection and preservation of production associations.
+The packaged runtime then passed the 42 native surface checks with its application
+JAR first on the classpath and without developer `lib/*` dependencies.
+
+Additional regression suites passed: 62 frame-limit, 58 viewport workflow, 38 menu,
+149 TextBox runtime, 48 chat-bubble/privacy, 43 movement-prediction, four controller
+and 119 compatibility-fullscreen checks. The legacy fullscreen fixture now waits
+for real keyboard focus before synthesizing F11; its previous immediate key
+injection could race Windows activation. No production fullscreen behavior was
+changed for that fixture fix.
+
+Version **0.12.0** is published through the website download and pinned Ed25519 update
+feed. Installer size: **40,888,717 bytes**. SHA-256:
+`17944dd8c66a071b45eee8abfbcf36d0321d17c33b2a3daeceade39594946a20`.
+The actual packaged updater verified and downloaded the public release without
+executing it; the normal website download was independently checked over validated
+HTTPS against the same hash. The existing release signing identity was preserved.
+
+Only desktop release files were deployed. The platform stayed healthy and its JAR
+hash remained unchanged; no account/game migration or service restart occurred.
 
 *Archive copy: internal build and deployment details have been omitted.*
