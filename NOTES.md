@@ -1,21 +1,22 @@
-DEVGENIA 0.14.7 — CREATOR GAME STORE
+DEVGENIA 0.14.8 — STUDIO COLORS AND MULTI-SELECTION
 
-Manage Games now offers Entitlements and repeatable Game Sparks. Creators can
-upload an icon, set name/description/Genits price, make products public/private
-and remove them. Public Game Store cards appear above Game servers. Checkout
-reviews the price before an authenticated, idempotent wallet transaction.
-The public game page no longer offers Play in browser.
+The shared Studio color picker now uses a hue/saturation wheel, a brightness
+slider and exact HEX/RGB entry. Current and new previews make changes easy to
+compare. Apply commits the color; Cancel, Escape and closing the dialog leave
+the original intact. Existing alpha values are preserved.
 
-Permanent numeric entitlement IDs are global and never recycled. Deleted and
-private products retain paid ownership; scripts can query by numeric ID or key.
-Game Sparks have separate repeatable receipts, trusted delivery to the game and
-explicit reward acknowledgment. Saved-data reward deduplication handles reconnect
-and crash/retry windows; unhandled receipts are retained.
+Click inside the arguments of a new Color(...) expression in a script to see a
+clickable color preview. The wheel updates that expression's numeric RGB
+arguments. Undo and Redo treat the replacement as one change. Comments, strings
+and expressions that cannot be safely interpreted as a constant color are not
+edited by the preview.
 
-No project-file or public play protocol migration is required. Studio's Java API
-includes player.hasEntitlement(long), game.entitlements.has(player,long) and
-game.sparks.onPurchase. The installed guides include game-store.txt and
-game-store-scripting.txt. Existing Entitlement Simulator testing still works.
+Properties now supports edits across selected Parts and other compatible
+instances, including colors, physics switches, numbers, text, layout and instance
+references. Each target retains unrelated settings. A shared edit produces one
+Undo step, and invalid or stale edits are rejected before changing the selection.
+Read-only properties retain their restrictions. Import and editor-launch actions
+still operate on the active instance.
 
-Purchases transfer the full Genits price to the game creator. There is no cash
-payout or commission. Real-money payment/provider settings are unchanged.
+Existing projects require no conversion. Studio edits during a playtest remain
+temporary and disappear when the test stops.
