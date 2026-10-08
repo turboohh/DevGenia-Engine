@@ -1,11 +1,27 @@
-# DevGenia 0.7.0 historical archive
+# DevGenia 0.8.0
 
-Reconstructed provenance summary; original version-specific release notes were not recovered.
+Published to https://devgenia.com. Existing accounts, games and uploads are preserved.
 
-The recovered downloaded installer and embedded application JAR match the original deployment record, which records a successful public TLS download hash check. The packaged platform origin is https://devgenia.com.
+## Player and Studio
 
-Default platform origin: https://devgenia.com. No update feed or signed release manifest was recovered for this build.
+Server simulation now advances with monotonic elapsed time and bounded substeps instead of sleeping another fixed frame after each update. Online input polling is faster. Declarative snapshots use bounded in-memory XML rather than temporary disk files, retaining the existing XML and scene validation. A 46-part fixture improved median serialization/deserialization from 17.07 to 8.84 ms; this is not a gameplay FPS benchmark. A real confined Linux worker travelled at 98.3% of configured movement speed over 2.505 seconds, including snapshot overhead.
 
-The original package README is included unchanged. Its platform setup wording predates the embedded public-platform default; the application configuration in this artifact defaults to https://devgenia.com. The preserved artifact is 40,129,608 bytes. SHA-256: `c03c80821211c596fe45428fdd4a8cf7cc6a07b2027bf591b7323952f8105830`.
+Escape offers Reset avatar for online, local and Studio sessions. Published online servers offer an Invite friends link with a public branded Open Graph preview; it contains no play credentials and expires when the room/current release is unavailable. Server lists show occupant avatars. Attachment-based spatial audio survives the isolated worker's client filtering.
 
-This archive contains packaged applications and release metadata; it does not reconstruct original source history.
+The installer associates unowned .dgs files with Studio, registers Open With and the Studio icon, preserves existing Windows choices, and cleans up only its own registrations.
+
+## Website
+
+Catalog items have durable numeric IDs per category, e.g. /catalog/shirts/1 and /catalog/faces/1. Legacy references, saved appearances and protected templates keep working. Profiles support following and visible group memberships/ranks. Friends and Messages have numbered red badges; new messages can trigger a DevGenia notification sound after browser interaction. Conversations can be muted; Enter sends and Shift+Enter inserts a newline.
+
+Groups support photos, Owner/Admin/Member defaults, configurable ranks and permissions. Additional ranks cost 10 Genits with idempotent charging and recovery. The website serves SVG and PNG favicons.
+
+## Payments
+
+Stripe Checkout is prepared for Genits with signed callbacks, verified provider receipts, idempotency and refund/dispute handling. Payments remain disabled: no live credentials or real charge has been used. An activated merchant account and private setup are still required. DevGenia+ subscription billing is not enabled. See COMMERCE.md and deployment/configure-stripe.py.
+
+## Validation
+
+84 Java regression suites and 10 JavaScript behavioral checks passed. Final focused billing tests: 183 checks; simulation/snapshot tests: 15. Final Linux Java 17/rootless Docker tests passed, including the native HTTP player flow. The actual Windows installer passed 116 assertions, including native Studio/Player launch, AppContainer, upgrade/uninstall, file association and data preservation. All 554 production classes match between the installed desktop application and the deployed server. Public HTTPS download hash and native guest launch/reset/invite were verified after activation.
+
+*Archive copy: internal build and deployment details have been omitted.*

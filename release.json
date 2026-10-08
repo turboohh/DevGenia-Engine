@@ -1,36 +1,31 @@
 {
-  "version": "0.7.0",
+  "version": "0.8.0",
   "archiveDate": "2026-10-08",
-  "originalPublicationTimestamp": "2026-09-25T21:26:48.241394+02:00",
+  "originalPublicationTimestamp": null,
   "originalSignedManifest": false,
-  "installerSHA256": "c03c80821211c596fe45428fdd4a8cf7cc6a07b2027bf591b7323952f8105830",
+  "installerSHA256": "a04402b1f5198dba3d5def6212f31527eaea7d92899a1540501ccb9f13a9555d",
   "assetKind": "installer",
-  "primaryAsset": "DevGeniaSetup-0.7.0.exe",
-  "primarySHA256": "c03c80821211c596fe45428fdd4a8cf7cc6a07b2027bf591b7323952f8105830",
+  "primaryAsset": "DevGeniaSetup-0.8.0.exe",
+  "primarySHA256": "a04402b1f5198dba3d5def6212f31527eaea7d92899a1540501ccb9f13a9555d",
   "archiveStatus": "preserved public release",
   "historicalOnly": false,
-  "availabilityNote": "The recovered downloaded installer and embedded application JAR match the original deployment record, which records a successful public TLS download hash check. The packaged platform origin is https://devgenia.com.",
+  "availabilityNote": "",
   "sourceSnapshot": "not included in this archive tag; preserved binary and release metadata only",
   "assets": [
     {
-      "name": "ARCHIVE_NOTES.md",
-      "bytes": 922,
-      "sha256": "7e82450f7859b9e620795ee0e808cdaff2509cd9863953a0ae7cb71d3fc7ca59"
+      "name": "DevGeniaSetup-0.8.0.exe",
+      "bytes": 40200535,
+      "sha256": "a04402b1f5198dba3d5def6212f31527eaea7d92899a1540501ccb9f13a9555d"
     },
     {
-      "name": "DevGeniaSetup-0.7.0.exe",
-      "bytes": 40129608,
-      "sha256": "c03c80821211c596fe45428fdd4a8cf7cc6a07b2027bf591b7323952f8105830"
-    },
-    {
-      "name": "ORIGINAL_PACKAGE_README.txt",
-      "bytes": 2094,
-      "sha256": "cd435b5becf47eeab85d4cf6f4be5b70a0d48ded233f4239efcfadeb4a80ba97"
+      "name": "RELEASE_0_8.md",
+      "bytes": 2978,
+      "sha256": "3e92a8f65688dfdacf63f7f581290316fc233b78816c14c05286c05de23f59d7"
     },
     {
       "name": "SHA256SUMS",
-      "bytes": 267,
-      "sha256": "3936a7386c66f5c68f9f97e8f95cab076f4d313e25d2596497e2d2da08406edb"
+      "bytes": 171,
+      "sha256": "30e3259522cadf579a4075853c3f0f2d50b6dadf280caac4e8f293162a406d5c"
     }
   ]
 }
