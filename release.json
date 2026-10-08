@@ -1,36 +1,36 @@
 {
-  "version": "0.2.1",
+  "version": "0.3.0",
   "archiveDate": "2026-10-08",
   "originalPublicationTimestamp": null,
   "originalSignedManifest": false,
-  "installerSHA256": "5f8b8723c6edf9e2b406699f3b86904691d8a62339bd9097dcb4d05e29530c42",
+  "installerSHA256": "cb27a86ca5b0624812c847f20b7dcec2f96ca2f715ddd184c7df96064bcd6c62",
   "assetKind": "installer",
-  "primaryAsset": "DevGeniaSetup-0.2.1.exe",
-  "primarySHA256": "5f8b8723c6edf9e2b406699f3b86904691d8a62339bd9097dcb4d05e29530c42",
-  "archiveStatus": "preserved legacy local installer",
+  "primaryAsset": "DevGeniaSetup-0.3.0.exe",
+  "primarySHA256": "cb27a86ca5b0624812c847f20b7dcec2f96ca2f715ddd184c7df96064bcd6c62",
+  "archiveStatus": "preserved legacy local installer; public release status unverified",
   "historicalOnly": true,
-  "availabilityNote": "The preserved installer matches the recorded final installer download hash, final packaging byte count, and a second downloaded copy. It predates a configured public online platform.",
+  "availabilityNote": "The preserved downloaded installer contains version 0.3.0 in both the launcher and update metadata. Its size matches the recorded product installer build. No original installer checksum or public deployment record was recovered, so final public release status remains unverified.",
   "sourceSnapshot": "not included in this archive tag; preserved binary and release metadata only",
   "assets": [
     {
       "name": "ARCHIVE_NOTES.md",
-      "bytes": 830,
-      "sha256": "3bcebcf8e2ab4f39e157b7992d784feba65d54cacff9450327f9460eb0f781ea"
+      "bytes": 927,
+      "sha256": "edc4d7a5b6587bb96f6e67e2b479001fa95b511967d6d034412327a13781db53"
     },
     {
-      "name": "DevGeniaSetup-0.2.1.exe",
-      "bytes": 37274599,
-      "sha256": "5f8b8723c6edf9e2b406699f3b86904691d8a62339bd9097dcb4d05e29530c42"
+      "name": "DevGeniaSetup-0.3.0.exe",
+      "bytes": 39804246,
+      "sha256": "cb27a86ca5b0624812c847f20b7dcec2f96ca2f715ddd184c7df96064bcd6c62"
     },
     {
       "name": "ORIGINAL_PACKAGE_README.txt",
-      "bytes": 1183,
-      "sha256": "e4a209baaeb4de7b6010ca0152a6371b997a2150b21d09c18b164da48b77dec9"
+      "bytes": 1666,
+      "sha256": "6f4aedbbb7781fff659b648993f0a35a339772136d3b90894494b66cd8b75fbe"
     },
     {
       "name": "SHA256SUMS",
       "bytes": 267,
-      "sha256": "ab6fe3c4d5c3363a7244958988963398f80974500593321bb67d74b796286d81"
+      "sha256": "f4901a46a56270b1293bdee46009c6e5e188af8e985288daeb20e52767bbcb99"
     }
   ]
 }
