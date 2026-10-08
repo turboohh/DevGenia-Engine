@@ -1,36 +1,36 @@
 {
-  "version": "0.4.0",
+  "version": "0.6.0",
   "archiveDate": "2026-10-08",
   "originalPublicationTimestamp": null,
   "originalSignedManifest": false,
-  "installerSHA256": "96b855284e85db0b026ec6ed9f7a29c11da7367cd540cc5441dccf5cbd2d9eae",
+  "installerSHA256": "0d5794a793334d86d434e98c50166dfdba2f0e63a45448ea5b2428e95255a867",
   "assetKind": "installer",
-  "primaryAsset": "DevGeniaSetup-0.4.0.exe",
-  "primarySHA256": "96b855284e85db0b026ec6ed9f7a29c11da7367cd540cc5441dccf5cbd2d9eae",
+  "primaryAsset": "DevGeniaSetup-0.6.0.exe",
+  "primarySHA256": "0d5794a793334d86d434e98c50166dfdba2f0e63a45448ea5b2428e95255a867",
   "archiveStatus": "preserved legacy local installer",
   "historicalOnly": true,
-  "availabilityNote": "The preserved installer hash and size match the historical package smoke record and final product build. The recorded website check used a local platform; no public platform origin is embedded.",
+  "availabilityNote": "This preserved local-platform installer matches its original SHA-256 sidecar and the documented 0.6.0 package size. It was retained separately when the public-platform 0.6.1 build was made.",
   "sourceSnapshot": "not included in this archive tag; preserved binary and release metadata only",
   "assets": [
     {
       "name": "ARCHIVE_NOTES.md",
-      "bytes": 841,
-      "sha256": "cde3b8d3862f119e5ca38849e5065bbc1c60bab25318b62d54361e87bbfdc5de"
+      "bytes": 837,
+      "sha256": "266e3e9f2465cf9e943410eda480a7b5628e08b0eeb7218ece3ae1c5286ebe51"
     },
     {
-      "name": "DevGeniaSetup-0.4.0.exe",
-      "bytes": 39919123,
-      "sha256": "96b855284e85db0b026ec6ed9f7a29c11da7367cd540cc5441dccf5cbd2d9eae"
+      "name": "DevGeniaSetup-0.6.0.exe",
+      "bytes": 40022043,
+      "sha256": "0d5794a793334d86d434e98c50166dfdba2f0e63a45448ea5b2428e95255a867"
     },
     {
       "name": "ORIGINAL_PACKAGE_README.txt",
-      "bytes": 2012,
-      "sha256": "8a6f5d32b7903079a81b294667c0efcb86d19eba7acf03b3828488fd135e0383"
+      "bytes": 2094,
+      "sha256": "cd435b5becf47eeab85d4cf6f4be5b70a0d48ded233f4239efcfadeb4a80ba97"
     },
     {
       "name": "SHA256SUMS",
       "bytes": 267,
-      "sha256": "c7eb260ba99f95d09808d6152f3e55a720931ed03509a7ea15a322b5eda18269"
+      "sha256": "1520e7a6564a9ad5d14d9245dead30474b288ef80d554592319969310f70118a"
     }
   ]
 }
