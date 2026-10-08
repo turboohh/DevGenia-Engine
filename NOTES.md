@@ -1,11 +1,13 @@
-# DevGenia 0.10.1 — Frame limit and rendering hotfix
+# DevGenia 0.11.0 — beta preparation
 
-The desktop frame-rate limit now controls actual 3D renders. Mouse motion, transparent UI layers, chat and menu repaint requests reuse the last complete world frame instead of independently rendering and inflating the counter. Studio, standalone Player and online/LAN Player all grant frames from their presentation clock. Unlimited removes that clock's rate limit while keeping one world render per presentation update.
+This release strengthens account administration, delivery and recovery while preserving the existing gameplay and frame pacing.
 
-Simulation timing, local movement prediction, network authority and game data are unchanged. Display resizing and changed preferences refresh safely; editor selection and transform painting stay immediate.
+- Staff actions require a recently confirmed authenticator code or unused recovery code. Set up your own authenticator at `/account/staff-security`; being an owner alone no longer unlocks staff tools. Recovery codes should be stored privately offline.
+- Privacy, family help and getting-started pages link to private support requests. A private-profile shortcut hides connections and presence and disables new party invitations. It does not disable game chat.
+- Player shows the installed application version and checks the signed release feed when its home window opens. Studio has Help → Updates & repair. Application updates require confirmation; published game versions still load when joining. Older applications without the feed need this installer once.
+- The release manifest is signed with a separately stored Ed25519 key and the public key is pinned in the application. This does not replace a Windows Authenticode publisher certificate or guarantee the absence of SmartScreen warnings.
+- Optional independent encrypted backups and local health monitoring have explicit restore checks and conservative capacity budgets. They do not buy storage or automatically scale the server.
+- DevGenia+ payment handling now covers paid renewals, weekly grants, cancellation, failure and duplicate events. Stripe and new membership checkout stay disabled by default until real provider testing and activation are complete.
+- A read-only launch inventory and three reproducible starter-game scenarios make outstanding checks visible.
 
-Repeated sky gradients are cached. OpenGL output stays premultiplied through AWT, avoiding a full-screen conversion. Disabled emitters with no surviving particles no longer require a CPU depth pass. GPU graphics detail now limits internal world resolution (Low520k, Medium1.2M, High4M pixels; smaller windows stay native). UI stays at full resolution. Lower world resolutions use fast nearest sampling, trading edge/texture sharpness for speed; High retains native1080p. Software rendering and mirror fallback keep their previous budgets and alpha semantics.
-
-Validation: 39 viewport presentation assertions,62 actual-window cap integration assertions,21 native quality/projection checks,16 native compositing checks, plus editor, transparency, menu, prediction and fixed-step simulation regressions. Real clocks in Player/Multiplayer/Studio produced40 world frames over1.30seconds at30FPS while approximately900 separate Swing paints occurred. Unlimited still accepts every scheduled frame; it does not promise a minimum frame rate.
-
-Full Player test on this GTX1650 machine:720p median paint17.47→12.38ms;1080p25.88→22.11ms. These are offscreen complete-window render measurements, with another game open; they are not guaranteed on-screen FPS. Simulation and refresh were measured separately. A larger renderer architecture change would be needed to eliminate GPU-to-AWT readback altogether. This update changes the desktop applications and downloadable installer; no live game-server restart or data migration is needed.
+The beta is not certified for an unrestricted public or paid launch. Verified parental consent/age assurance, reviewed legal/operator details, actual staff MFA enrollment, provider activation, independent assessment and outside beta testing remain separate requirements. See PUBLIC_LAUNCH_CHECKS.md and PUBLIC_BETA_READINESS.md for evidence and limits.
