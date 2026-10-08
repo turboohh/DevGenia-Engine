@@ -1,36 +1,33 @@
-# DevGenia 0.8.3 — playing together and creator workflows
+# DevGenia 0.9 — create, test and improve together
 
-## Player and Studio
+## Start with a playable game
 
-- First-person mouse look works without holding a mouse button. Escape, chat, text input and loss of focus release captured input.
-- Follow cameras shorten their distance at solid walls and return smoothly when the obstruction clears.
-- Stationary Studio views continue animating particle emitters.
-- Settings include keyboard remapping, camera inversion, optional standard gamepad input, separate master/music/effects/interface volume, text size and reduced motion. Actual physical-controller behavior still needs hardware testing.
-- View → Performance opens a live monitor for frame intervals, render time, simulation time and memory. Existing script profiling remains available.
-- Offscreen geometry is culled conservatively. Validated immutable textures, audio and meshes are reused across snapshots using a bounded content cache. Changed content invalidates the cache; mutable scene state remains separate.
-- Shared sound files retain separate Sound-instance identities, groups and emitters. Listener and gain changes are not lost when the audio device is busy.
-- Online launch shows its real stage and offers cancellation. Temporary connection failures have bounded retries and a manual Reconnect action. Expired or revoked access requires joining again from the website.
-- Optional step height, coyote time and jump buffering use the same character controller for prediction and server simulation. Existing projects retain their previous defaults.
-- IntValue, StringValue, ObjectValue and LeaderboardStats work in Explorer, Properties, scripts, saved projects and network replication. IntValue children of a Player's LeaderboardStats become Tab leaderboard columns. Player scores are server-controlled.
-- The editable obby, time-trial and collecting templates demonstrate Stage, Time ms and Crystals scores.
+**Help → Build your first game** guides you through the editable **Power Cell Run** example. Change its collectible rewards and vault door, run Play, collect a cell and check the project before publishing. The steps respond to actual editor/game state.
 
-## Website and accounts
+Insert **Door, Collectible, Damage Zone, Quest and Round Manager** components through Explorer. Their Properties configure interaction, rewards, objectives and rounds without rebuilding these systems in every project. Java remains the scripting language. See [Creator kits](CREATOR_KITS.md).
 
-- Sign in can remember a trusted browser for at most 90 days. Logging out, password recovery, access revocation and account restrictions revoke remembered access. Account security provides sign-out-everywhere.
-- Profiles have clickable friends/followers/following lists. Account privacy controls protect lists and presence on the server. Online means activity within the last 90 seconds; last-seen information follows the same privacy rules.
-- Profile staff badges use the same server-controlled role as game badges.
-- Friends can form parties of up to eight, accept invitations and reserve seats in one server. Each member launches with their own identity. Server waiting lists use ordered, expiring reservations.
-- Guest game progress is stored separately for each browser guest and can transfer when registering an account. Existing account progress is preserved. Identical save retries are idempotent; conflicting stale saves are rejected.
-- Game pages use accessible Play/favorite icons and green Join controls. Studio preview and raw project downloads are restricted to the creator on both the page and API.
+## Keep imported appearance and choose real collision shapes
 
-## Administration
+glTF/GLB imports preserve separate material surfaces, base colors, PNG/JPEG textures, opacity and wrapping. Part Physics now offers Box, Sphere, Capsule and editable Compound colliders, with a wireframe preview. Both rendering backends support imported alpha. See [Materials and colliders](MODEL_IMPORT_AND_COLLIDERS.md).
 
-The server operator explicitly configures an existing owner account. The owner can open `/admin`, search an account and grant or revoke a moderator/admin role, grant Genits, restrict access or end sessions. Sensitive actions require the current password, server authorization and an audit entry. Administrators cannot promote themselves or other accounts.
+## Check a draft before releasing it
 
-Account restrictions permit logout and a different account. IP restrictions also affect shared networks. Browser-device restrictions use a signed cookie and can be evaded by changing/clearing the browser; these are **not hardware bans**. This release does not claim invulnerability or add multifactor authentication. See `ADMIN_SECURITY.md`.
+**File → Publish → Check project** checks scripts, Spawn and component configuration, and project/network size. Errors block release; unfinished work can still be saved as a private draft.
 
-## Compatibility and validation
+On the website, open **Creator workspace → Manage project** to invite registered testers to one exact revision. They can play and submit categorized feedback. Owners can end a test or remove a tester. Private playtests remain separate from public discovery and saved player progress.
 
-New desktop clients use play protocol 4. The website retains protocols 2 and 3 for previously installed Players. LAN clients must use the same LAN protocol (9). Typed values require project format 6; files without typed values retain format 5. The confined worker protocol is 5 and must ship with the matching server JAR.
+## Share a project safely
 
-Release evidence is recorded in `QUALITY_0_8_3.md` and the build's validation logs. This document describes implementation; production activation is tracked separately there. No universal FPS or latency guarantee is made.
+Owners grant **Edit**, **Play drafts** and **Publish** independently. **File → Open shared project** opens editable projects in Studio. Each upload makes an immutable revision; a stale upload is rejected and leaves local work intact. History includes authors, and authorized publishers can release or roll back a saved revision. See [Shared projects](SHARED_PROJECTS.md).
+
+## Learn from real play
+
+Game owners get a dashboard with successful joins, failed launches, session length, returning visits, server preparation time and server-interrupted sessions, filtered by version. Server Scripts can mark milestones such as completing a tutorial. Private tests do not inflate these measurements. See [Creator analytics](CREATOR_ANALYTICS.md).
+
+Discover adds **Continue playing**, **Friends are playing**, **Updates to your favorites** and administrator-selected **Featured worlds** when matching content exists. Friend presence and private history retain their privacy rules.
+
+## Compatibility and practical scope
+
+Install the new **DevGeniaSetup.exe** for these Studio/Player features. Existing projects and account data remain supported. Scenes using the new gameplay or collision/material fields use format 7; older Players receive an explicit update message. Game-content updates still load from the platform without reinstalling for each game revision.
+
+This release provides saved-revision collaboration, not simultaneous live co-editing or automatic merging. Model import is static; skeletal animation import and full PBR maps remain future work. Analytics does not claim device FPS, client crashes or end-to-end loading time. Existing server capacity limits remain in force.
