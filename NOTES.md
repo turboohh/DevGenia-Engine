@@ -1,46 +1,31 @@
-# DevGenia 0.12.1 - Native GPU by default
+# DevGenia 0.13.0 — launch quality
 
-Player and Studio playtests now use direct Native GPU presentation automatically
-on supported Windows computers. This promotes the existing 0.12.0 renderer after
-the application acceptance checks and positive user testing; it does not introduce
-a new graphics pipeline or change physics, networking or the simulation timestep.
+This release improves shared game simulation, creator onboarding, analytics, moderation capacity and mobile presentation. Native GPU remains the default Windows play renderer, with the existing compatibility fallback. It does not activate payments or certify readiness for a broad public launch.
 
-In **Escape → Settings → Renderer**, the default reads **Automatic (Native GPU)**.
-New installations, older preference files without a renderer, and saved Automatic
-preferences use it immediately. Existing explicit **Compatibility** and **Native GPU**
-choices survive upgrades. The old `NATIVE_EXPERIMENTAL` identifier is retained in
-saved preferences for compatibility, with a shorter **Native GPU** display label.
+## Player and creator changes
 
-Missing native dependencies, unsupported systems and recoverable renderer errors
-retain the compatibility fallback. Unsupported planar mirrors also fall back for
-the current viewport. The ordinary Studio editor and its local playtest edit mode
-keep their existing picking and transform behavior. Users can still choose
-**Compatibility** manually or use the recovery override in `NATIVE_VIEWPORT.md`.
+- Identical public world snapshots are encoded once per worker step and shared with clients. Local camera, UI, audio, physics and other script changes still receive their own view. Server scripts remain private. Authoritative replication compares each server delta once and applies it separately to each local world.
+- Short-lived hierarchy lookup scopes reduce repeated scene scans during serialization and rig queries. They end before editor changes or script callbacks; no stale cross-frame scene cache is retained.
+- Power Cell Run is a complete reference loop: collect three distinct cells together, power the gate, extract, then replay. It includes a readable HUD, embedded sound cues, durable wins/best time and a creator playtest checklist. Exported examples are not automatically published as public games.
+- First-game checks are invalidated when the project changes, so an old successful preflight cannot approve a different revision.
+- Mobile browser play gains local text-field editing, embedded UI imagery, bounded particles/audio, mute/resume and touch cancellation. This is browser support; native iOS/Android packages and physical-device certification are not included.
 
-The extended fallback check also exposed a Swing double-buffering error when a
-mirror rendered its offscreen reflection during a normal window repaint. The
-reflection viewport now paints directly to its existing image without requesting
-a window-owned buffer; rendering exceptions on the UI thread fail the native
-acceptance test instead of being overlooked.
+## Platform and operations
 
-This update does not reset FPS caps or other client preferences. No additional
-FPS gain over selecting Native GPU manually in 0.12.0 is implied.
+- Creator analytics use first-observed UTC cohorts for D1/D7 retention, with mature denominators and explicit incomplete-history limits. Old unidentified activity is not presented as new acquisition.
+- A bounded, authenticated first-render acknowledgement measures the time from launch-ticket issuance to the server receiving a client's first visible rendered-frame report. It is client-reported render evidence, not proof of responsive input or display scanout. Private previews are excluded.
+- Expired restrictions no longer consume the active restriction limit forever. Original evidence is preserved in private history. Corrupt restrictions fail closed.
+- Reviewed reports leave the pending report capacity while immutable originals remain available for audit and per-reporter quotas. Rebuildable indexes recover interrupted index maintenance. This is not a transaction journal for the entire enforcement/audit workflow, and archive scans still grow with history.
+- Resend operational alerts support bounded delivery, stable retry identities, cooldowns and recovery notifications. On-server monitoring cannot report a complete outage of its own VPS; external uptime monitoring is still needed.
+- A read-only billing preflight reports ledger capacity, receipt attention and reconciliation work without contacting Stripe or changing balances. Checkout reconciliation handles an already-paid session even if its webhook was missed, using existing fulfillment deduplication. Payment and membership sales remain disabled pending owner/provider approval.
+- Server deployment has checksum checks, a private deployment lock, a consistent backup and verified artifact rollback. It does not freeze new admissions before the service stops, and artifact rollback does not undo data/schema changes.
 
-Only the Windows desktop installer and signed update feed are updated. Platform
-services, accounts, games, billing and the release signing identity are preserved.
+## Validation and remaining limits
 
-## Verification and publication
+Tests include actual Windows and Linux isolated workers, HTTP multiplayer/protocol tests, native desktop/browser presentation checks, mocked payment lifecycle scenarios and deployment fault injection.
 
-Compiled for Java 17; the final packaged runtime passed 219 renderer-preference,
-55 native viewport and 58 actual Studio/Player/Multiplayer host checks. Headless
-and missing-native-library preferences were checked separately. The mirror bug
-was reproduced by the guarded test on the earlier candidate and is absent from
-the final packaged run; 18 visual-environment and 503 editor/face checks passed.
+The CX23 eight-client worker workload improved substantially but still misses the 30-step/s target. Worker throughput is separate from GPU FPS and is not a promise about real-player latency. Keep capacity conservative and run an outside multi-device beta before scaling.
 
-Published installer: 40,885,619 bytes; SHA-256:
-`08f222d3715a969839a004aed61203c4c5b0a53f4a012bd33bdf4fe330d8a4d8`.
-The actual packaged updater verified the public HTTPS feed, pinned Ed25519
-signature and downloaded installer hash.
-The platform remained healthy and its JAR hash unchanged.
+Legal/operator details, age and verified parental-consent handling for under-13 access, external security review, Authenticode, physical mobile testing and live Stripe verification remain explicit gates. Every staff member must complete MFA. No test result substitutes for these approvals or real user acceptance.
 
 *Archive copy: internal build and deployment details have been omitted.*
