@@ -1,24 +1,34 @@
-DevGenia 0.14.2 — Playtest and interface polish
+DevGenia 0.14.3 — Studio editing, core health HUD and hosted engine compatibility
 
-Proximity prompts are cleared immediately when a Studio playtest ends. Their
-fade, hold progress and world anchor are reset before the editor resumes. Moving
-out of range during gameplay still uses the normal fade animation. Switching
-local scenes also clears the previous scene's transient interaction UI.
+Select several UI instances of the same type to edit shared appearance properties
+in one action. Background transparency, text styling and related appearance fields
+apply to the complete selection. Undo restores each element's original values.
+Names, text contents and geometry remain individual edits. Mixed-type selections
+show the active element's properties without silently editing unrelated types.
 
-The generated Hotbar uses smaller, translucent blue/teal slots and a mint active
-indicator. Slot count, top/bottom positioning, keyboard selection, mouse clicks
-and ordinary UI customization remain available through the existing systems.
+CoreService now provides Health HUD enabled, on by default. The built-in HUD shows
+the local Character's current/max Heart health and a colored health bar. It reacts
+to damage, healing, death and respawn in Studio, Player and mobile web play.
+Use game.core.setHealthHudEnabled(false) in a Local Script for a custom player HUD,
+or disable the property in Studio for the game. The HUD does not intercept input.
 
-Chat chrome fades away when idle while received messages remain visible. Moving
-the pointer over chat, typing or using its controls restores the panel. Message
-text retains contrast over the world; the fade does not discard chat history.
+Ctrl+X/C/V cuts, copies and pastes selected instance hierarchies. A pending cut is
+shown with faded Explorer rows and can be cancelled with Escape. Cut preserves IDs
+and world transforms; copy creates new IDs and remaps internal references across
+the selection. Services/runtime-owned player objects cannot be moved this way.
+Text fields, script editors and inline renaming retain normal text clipboard use.
+Explorer expansion arrows remain visible when a row is hovered or selected.
 
-NPC look-at uses the actual forward direction and a rigid rotation around the
-body root, preserving its position and vertical height. Very close overlapping
-targets do not repeatedly flip its heading. This fixes rear-target oscillation
-and vertical movement caused by looking from tilted/nested models.
+The previous hosted engine rejected new instances with "Online scene limit:
+unsupported instance element". Server compatibility is verified using the expanded
+workshop projects through the publication API and OS-confined game workers. Unknown
+instance elements are still rejected; errors now identify the element and explain
+when the platform engine needs an update. /api/v1/health reports format/protocol.
 
-This desktop update includes Studio and Player and preserves existing projects
-and user data. The live platform engine remains a separate deployment; existing
-hosted games can still be joined, while newer authored systems require the
-corresponding hosted-engine upgrade for online publication and execution.
+Modified CoreService settings or references require project format 12. Default-only
+CoreService does not force older scenes into a newer project format. Player protocol
+10 and snapshot format 12 preserve compatible older Player paths and reject games
+that those Players cannot represent, without dropping unsupported semantics.
+
+See ui-multi-selection.txt for shared Properties editing. This increment does not
+claim that all of the broader master expansion roadmap has been completed.
