@@ -1,31 +1,31 @@
 {
-  "version": "0.8.1",
+  "version": "0.8.3",
   "archiveDate": "2026-10-08",
   "originalPublicationTimestamp": null,
   "originalSignedManifest": false,
-  "installerSHA256": "ffcf7117a705a98a5b6dd9f433d7397ca9f1af471fa80845584295d8e3614224",
+  "installerSHA256": "b1a62960bbaa2131c2926539ae6899284aafbb11d3ce8b28d9f9c851f89fab7a",
   "assetKind": "installer",
-  "primaryAsset": "DevGeniaSetup-0.8.1.exe",
-  "primarySHA256": "ffcf7117a705a98a5b6dd9f433d7397ca9f1af471fa80845584295d8e3614224",
+  "primaryAsset": "DevGeniaSetup-0.8.3.exe",
+  "primarySHA256": "b1a62960bbaa2131c2926539ae6899284aafbb11d3ce8b28d9f9c851f89fab7a",
   "archiveStatus": "preserved public release",
   "historicalOnly": false,
   "availabilityNote": "",
   "sourceSnapshot": "not included in this archive tag; preserved binary and release metadata only",
   "assets": [
     {
-      "name": "DevGeniaSetup-0.8.1.exe",
-      "bytes": 40233089,
-      "sha256": "ffcf7117a705a98a5b6dd9f433d7397ca9f1af471fa80845584295d8e3614224"
+      "name": "DevGeniaSetup-0.8.3.exe",
+      "bytes": 40354120,
+      "sha256": "b1a62960bbaa2131c2926539ae6899284aafbb11d3ce8b28d9f9c851f89fab7a"
     },
     {
-      "name": "RELEASE_0_8_1.md",
-      "bytes": 4138,
-      "sha256": "a351a5bad20fab0060efd098c69fe9ab618e83a71b4b2b1bf420d4de3c442ba3"
+      "name": "RELEASE_0_8_3.md",
+      "bytes": 4339,
+      "sha256": "d7bac4593ae3c707c4fe9843fc65600367c8880538b5c3e0c0b6ef18528c165a"
     },
     {
       "name": "SHA256SUMS",
-      "bytes": 173,
-      "sha256": "369139c1d4bd071e7797e2e26513c00e808260288f091884fe0ab513baf2304a"
+      "bytes": 175,
+      "sha256": "6f001d06ba723af7d1af971f1f4175f6b7abaa3d734c975ef8f2a4ff04bdd76f"
     }
   ]
 }
