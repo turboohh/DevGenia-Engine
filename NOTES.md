@@ -1,31 +1,25 @@
-DevGenia 0.14.0 — Master Expansion development release
+DevGenia 0.14.1 — Readable UI text
 
-This installer updates the ordinary Windows Studio and Player installation.
-It includes Java, the matching native GPU adapter, sandbox helper, three new
-editable examples and the expansion guides. Studio displays 0.14.0 at the
-bottom right, making an old shortcut or old installer easier to recognize.
+Select a text UI instance and use Properties > Text shadow / Text border.
+Configure shadow color, transparency and horizontal/vertical offset; configure
+border color, transparency and thickness. A thickness of zero disables borders.
+Existing projects retain their appearance until an effect is enabled.
 
-File > New from template:
-  Gear Workshop: equipment, welds, inventory, hotbar and interaction.
-  Quest Expedition: NPC dialogue, quests, rewards and a small supply shop.
-  Race Workshop: two laps, ordered checkpoints, HUD and saved best times.
+Effects follow the letters, including wrapped text, dialogue speakers, progress
+percentages, buttons and editable textboxes. Text transparency fades the text
+and its effects together; parent opacity is inherited. Background transparency
+continues to affect only the background. Studio, Player and the browser renderer
+use the same saved properties. See ui-text-effects.txt for scripting examples.
 
-The shared engine APIs, expanded UI authoring, data tools, simulator, seats,
-vehicles, camera timelines, lights and local scene transitions are described
-in the accompanying guides. The 90-point Master Expansion is still in progress;
-master-expansion-status.txt distinguishes implemented systems and open work.
+Projects using these properties require project format 11. Older projects still
+open normally. New LAN sessions require matching 0.14.1 clients; HTTP clients
+negotiate supported protocol versions and reject unsupported project features
+instead of dropping them silently. The Player can still join existing hosted
+games using the current production server.
 
-The desktop Player can join the existing protocol5 platform as well as the
-new protocol8 server. Negotiation occurs only on the exact pre-ticket protocol
-refusal; authentication failures never trigger retries or weaker authorization.
-Legacy movement commands and local prediction keep their original movement
-semantics, while script keys still use the old extra-key channel.
+This release updates the Windows installation and its signed download feed.
+The hosted platform engine is a separate deployment: new-format projects and
+browser-side features require that engine upgrade before use on the live site.
 
-This desktop release does not upgrade the hosted game engine. Publishing and
-running new format-8/9/10 engine features online requires a corresponding
-platform engine upgrade. These new systems can be used now in Studio playtests,
-local standalone games and current-version local test servers.
-
-Setup preserves projects, edited bundled examples and separate account/settings
-data. Save open projects and close Studio/Player before applying an update.
-Old downloaded installers still contain their old engine; use the 0.14.0 setup.
+Save projects and close Studio/Player before applying an update. Your projects,
+edited examples and separate user/account settings are preserved by Setup.
