@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "archiveDate": "2026-10-08",
+  "originalPublicationTimestamp": null,
+  "originalSignedManifest": false,
+  "installerSHA256": null,
+  "assetKind": "portable-zip",
+  "primaryAsset": "DevGeniaStudio-0.2.0-Windows.zip",
+  "primarySHA256": "bece75d756beb01f0783d86938cef37d98c7818f76be31ad29a6253325a18833",
+  "archiveStatus": "preserved legacy local portable build",
+  "historicalOnly": true,
+  "availabilityNote": "The original portable Windows ZIP matches its preserved SHA-256 checksum. Its packaged launcher identifies version 0.2.0. Public online release status is unverified.",
+  "sourceSnapshot": "not included in this archive tag; preserved binary and release metadata only",
+  "assets": [
+    {
+      "name": "ARCHIVE_NOTES.md",
+      "bytes": 813,
+      "sha256": "c708f78e4ee7cf0e5e963681538cda50b1904af7487e08486d23bfa283aedca0"
+    },
+    {
+      "name": "DevGeniaStudio-0.2.0-Windows.zip",
+      "bytes": 42066627,
+      "sha256": "bece75d756beb01f0783d86938cef37d98c7818f76be31ad29a6253325a18833"
+    },
+    {
+      "name": "ORIGINAL_PACKAGE_README.txt",
+      "bytes": 733,
+      "sha256": "8d01f1ffed80069d39a9353a1e658bc8f83858b7a969b7b53538e61d066c11f4"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 276,
+      "sha256": "eaf06403b2dc549ff173899fd3e53005755ab2a277fc6be91ef1cdfa631509a3"
+    }
+  ]
+}

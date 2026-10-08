@@ -1,0 +1,36 @@
+{
+  "version": "0.2.1",
+  "archiveDate": "2026-10-08",
+  "originalPublicationTimestamp": null,
+  "originalSignedManifest": false,
+  "installerSHA256": "5f8b8723c6edf9e2b406699f3b86904691d8a62339bd9097dcb4d05e29530c42",
+  "assetKind": "installer",
+  "primaryAsset": "DevGeniaSetup-0.2.1.exe",
+  "primarySHA256": "5f8b8723c6edf9e2b406699f3b86904691d8a62339bd9097dcb4d05e29530c42",
+  "archiveStatus": "preserved legacy local installer",
+  "historicalOnly": true,
+  "availabilityNote": "The preserved installer matches the recorded final installer download hash, final packaging byte count, and a second downloaded copy. It predates a configured public online platform.",
+  "sourceSnapshot": "not included in this archive tag; preserved binary and release metadata only",
+  "assets": [
+    {
+      "name": "ARCHIVE_NOTES.md",
+      "bytes": 830,
+      "sha256": "3bcebcf8e2ab4f39e157b7992d784feba65d54cacff9450327f9460eb0f781ea"
+    },
+    {
+      "name": "DevGeniaSetup-0.2.1.exe",
+      "bytes": 37274599,
+      "sha256": "5f8b8723c6edf9e2b406699f3b86904691d8a62339bd9097dcb4d05e29530c42"
+    },
+    {
+      "name": "ORIGINAL_PACKAGE_README.txt",
+      "bytes": 1183,
+      "sha256": "e4a209baaeb4de7b6010ca0152a6371b997a2150b21d09c18b164da48b77dec9"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 267,
+      "sha256": "ab6fe3c4d5c3363a7244958988963398f80974500593321bb67d74b796286d81"
+    }
+  ]
+}

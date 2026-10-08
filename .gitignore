@@ -1,0 +1,14 @@
+/bin/
+/lib/
+/dist/
+/artifacts/
+/.devgenia/
+/.devgenia-platform/
+*.exe
+*.class
+*.log
+*.key
+.env
+.env.*
+server.env
+**/__pycache__/

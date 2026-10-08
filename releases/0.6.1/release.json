@@ -1,0 +1,36 @@
+{
+  "version": "0.6.1",
+  "archiveDate": "2026-10-08",
+  "originalPublicationTimestamp": "2026-09-25T09:58:16.7746117Z",
+  "originalSignedManifest": false,
+  "installerSHA256": "029a67f9b6afbe39b950faea4c51d9c8d6c14e2ae704c253a9aa5f8209fa5131",
+  "assetKind": "installer",
+  "primaryAsset": "DevGeniaSetup-0.6.1.exe",
+  "primarySHA256": "029a67f9b6afbe39b950faea4c51d9c8d6c14e2ae704c253a9aa5f8209fa5131",
+  "archiveStatus": "preserved public release",
+  "historicalOnly": false,
+  "availabilityNote": "The original public installer and embedded application JAR match the preserved public-release and deployment records. The packaged platform origin is https://devgenia.com.",
+  "sourceSnapshot": "not included in this archive tag; preserved binary and release metadata only",
+  "assets": [
+    {
+      "name": "ARCHIVE_NOTES.md",
+      "bytes": 879,
+      "sha256": "72365ba34a625be3b393f2345d1e5bc07bebb4109424f893e6d5f9a3a0e97730"
+    },
+    {
+      "name": "DevGeniaSetup-0.6.1.exe",
+      "bytes": 40034423,
+      "sha256": "029a67f9b6afbe39b950faea4c51d9c8d6c14e2ae704c253a9aa5f8209fa5131"
+    },
+    {
+      "name": "ORIGINAL_PACKAGE_README.txt",
+      "bytes": 2094,
+      "sha256": "cd435b5becf47eeab85d4cf6f4be5b70a0d48ded233f4239efcfadeb4a80ba97"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 267,
+      "sha256": "0aa584b17813b9d3bc1e4bdb22967f8a817edc1f4e73d2174e519d17e243323d"
+    }
+  ]
+}

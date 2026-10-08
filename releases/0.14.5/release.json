@@ -1,0 +1,46 @@
+{
+  "version": "0.14.5",
+  "archiveDate": "2026-10-08",
+  "originalPublicationTimestamp": "2026-10-07T21:18:31.273690700Z",
+  "originalSignedManifest": true,
+  "installerSHA256": "c986be3603393d5f2cd7b3ff9cca21bb661d747b598a66359ded45bd1f0e5fc4",
+  "assetKind": "installer",
+  "primaryAsset": "DevGeniaSetup-0.14.5.exe",
+  "primarySHA256": "c986be3603393d5f2cd7b3ff9cca21bb661d747b598a66359ded45bd1f0e5fc4",
+  "archiveStatus": "preserved public release",
+  "historicalOnly": false,
+  "availabilityNote": "",
+  "sourceSnapshot": "not included in this archive tag; preserved binary and release metadata only",
+  "assets": [
+    {
+      "name": "DevGeniaSetup-0.14.5.exe",
+      "bytes": 41775570,
+      "sha256": "c986be3603393d5f2cd7b3ff9cca21bb661d747b598a66359ded45bd1f0e5fc4"
+    },
+    {
+      "name": "release-0.14.5.txt",
+      "bytes": 2407,
+      "sha256": "9503cf1657cfea80892971004a374cebc681d0d18eda1b4b78e0ee43f58276e8"
+    },
+    {
+      "name": "release.manifest",
+      "bytes": 245,
+      "sha256": "af9e44ce9b6bddbeb06f03db30dae9f3159e58ea263edf9f3367f95356c64aa4"
+    },
+    {
+      "name": "release.manifest.sig",
+      "bytes": 88,
+      "sha256": "4802f9364f72677ac2b27ef1aa34e7d2aea2ebd779e0ae2e04acfd40835d7adc"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 440,
+      "sha256": "016d9b0c32ca4af159420227cc214ce5ba4488f2b7124107951b01caf6349896"
+    },
+    {
+      "name": "trusted-public-key.txt",
+      "bytes": 61,
+      "sha256": "abb02be443334070394cd4e91bf086beceafa3aee7e4a5da42a97eec53f6e17d"
+    }
+  ]
+}

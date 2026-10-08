@@ -1,0 +1,11 @@
+# DevGenia 0.10.1 — Frame limit and rendering hotfix
+
+The desktop frame-rate limit now controls actual 3D renders. Mouse motion, transparent UI layers, chat and menu repaint requests reuse the last complete world frame instead of independently rendering and inflating the counter. Studio, standalone Player and online/LAN Player all grant frames from their presentation clock. Unlimited removes that clock's rate limit while keeping one world render per presentation update.
+
+Simulation timing, local movement prediction, network authority and game data are unchanged. Display resizing and changed preferences refresh safely; editor selection and transform painting stay immediate.
+
+Repeated sky gradients are cached. OpenGL output stays premultiplied through AWT, avoiding a full-screen conversion. Disabled emitters with no surviving particles no longer require a CPU depth pass. GPU graphics detail now limits internal world resolution (Low520k, Medium1.2M, High4M pixels; smaller windows stay native). UI stays at full resolution. Lower world resolutions use fast nearest sampling, trading edge/texture sharpness for speed; High retains native1080p. Software rendering and mirror fallback keep their previous budgets and alpha semantics.
+
+Validation: 39 viewport presentation assertions,62 actual-window cap integration assertions,21 native quality/projection checks,16 native compositing checks, plus editor, transparency, menu, prediction and fixed-step simulation regressions. Real clocks in Player/Multiplayer/Studio produced40 world frames over1.30seconds at30FPS while approximately900 separate Swing paints occurred. Unlimited still accepts every scheduled frame; it does not promise a minimum frame rate.
+
+Full Player test on this GTX1650 machine:720p median paint17.47→12.38ms;1080p25.88→22.11ms. These are offscreen complete-window render measurements, with another game open; they are not guaranteed on-screen FPS. Simulation and refresh were measured separately. A larger renderer architecture change would be needed to eliminate GPU-to-AWT readback altogether. This update changes the desktop applications and downloadable installer; no live game-server restart or data migration is needed.

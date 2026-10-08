@@ -1,0 +1,36 @@
+{
+  "version": "0.6.0",
+  "archiveDate": "2026-10-08",
+  "originalPublicationTimestamp": null,
+  "originalSignedManifest": false,
+  "installerSHA256": "0d5794a793334d86d434e98c50166dfdba2f0e63a45448ea5b2428e95255a867",
+  "assetKind": "installer",
+  "primaryAsset": "DevGeniaSetup-0.6.0.exe",
+  "primarySHA256": "0d5794a793334d86d434e98c50166dfdba2f0e63a45448ea5b2428e95255a867",
+  "archiveStatus": "preserved legacy local installer",
+  "historicalOnly": true,
+  "availabilityNote": "This preserved local-platform installer matches its original SHA-256 sidecar and the documented 0.6.0 package size. It was retained separately when the public-platform 0.6.1 build was made.",
+  "sourceSnapshot": "not included in this archive tag; preserved binary and release metadata only",
+  "assets": [
+    {
+      "name": "ARCHIVE_NOTES.md",
+      "bytes": 837,
+      "sha256": "266e3e9f2465cf9e943410eda480a7b5628e08b0eeb7218ece3ae1c5286ebe51"
+    },
+    {
+      "name": "DevGeniaSetup-0.6.0.exe",
+      "bytes": 40022043,
+      "sha256": "0d5794a793334d86d434e98c50166dfdba2f0e63a45448ea5b2428e95255a867"
+    },
+    {
+      "name": "ORIGINAL_PACKAGE_README.txt",
+      "bytes": 2094,
+      "sha256": "cd435b5becf47eeab85d4cf6f4be5b70a0d48ded233f4239efcfadeb4a80ba97"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 267,
+      "sha256": "1520e7a6564a9ad5d14d9245dead30474b288ef80d554592319969310f70118a"
+    }
+  ]
+}
