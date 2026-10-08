@@ -1,34 +1,41 @@
-DevGenia 0.14.3 — Studio editing, core health HUD and hosted engine compatibility
+DEVGENIA 0.14.4 — INVENTORY AND SERVICE ORGANIZATION
 
-Select several UI instances of the same type to edit shared appearance properties
-in one action. Background transparency, text styling and related appearance fields
-apply to the complete selection. Undo restores each element's original values.
-Names, text contents and geometry remain individual edits. Mixed-type selections
-show the active element's properties without silently editing unrelated types.
+Explorer groups service roots in a stable order: world/player settings, shared and
+server assets, scripts and player startup, then UI/input/media and engine tools.
+All service icons use the same light-blue color. Ordinary instance colors remain
+distinct, and service IDs and project references are unchanged.
 
-CoreService now provides Health HUD enabled, on by default. The built-in HUD shows
-the local Character's current/max Heart health and a colored health bar. It reacts
-to damage, healing, death and respawn in Studio, Player and mobile web play.
-Use game.core.setHealthHudEnabled(false) in a Local Script for a custom player HUD,
-or disable the property in Studio for the game. The HUD does not intercept input.
+During Play, press backtick (`), the key usually above Tab, to open or close your
+inventory. It uses the shared Inventory input action, so creators can rebind it.
+The default inventory has 24 total slots: nine hotbar slots and 15 extra slots.
+Creators can change Inventory Capacity and the Hotbar's NumberOfSlots. Larger
+inventories have pages; the maximum remains 120 slots.
 
-Ctrl+X/C/V cuts, copies and pastes selected instance hierarchies. A pending cut is
-shown with faded Explorer rows and can be cancelled with Escape. Cut preserves IDs
-and world transforms; copy creates new IDs and remaps internal references across
-the selection. Services/runtime-owned player objects cannot be moved this way.
-Text fields, script editors and inline renaming retain normal text clipboard use.
-Explorer expansion arrows remain visible when a row is hovered or selected.
+With the inventory open, drag an item between a hotbar slot and an inventory slot.
+You can also click the source item and then its destination. Occupied destinations
+swap their items. Only your own current slots can be changed; stale, repeated or
+invalid requests cannot create items. Closing with Escape restores gameplay before
+the next Escape opens the player menu. First-person mouse capture releases while
+the inventory is open. Chat and other text fields retain normal text input.
 
-The previous hosted engine rejected new instances with "Online scene limit:
-unsupported instance element". Server compatibility is verified using the expanded
-workshop projects through the publication API and OS-confined game workers. Unknown
-instance elements are still rejected; errors now identify the element and explain
-when the platform engine needs an update. /api/v1/health reports format/protocol.
+The inventory panel uses ordinary DevGenia UI instances, alongside the existing
+ordinary-UI hotbar. Server-authoritative inventory contents are separate from the
+local open/closed panel, mouse gestures and pagination.
 
-Modified CoreService settings or references require project format 12. Default-only
-CoreService does not force older scenes into a newer project format. Player protocol
-10 and snapshot format 12 preserve compatible older Player paths and reject games
-that those Players cannot represent, without dropping unsupported semantics.
+To save the player's inventory and slot order between visits:
+1. Insert an Inventory under StarterInventory, or select the existing one.
+2. Enable "Save inventory" and choose a stable "Save key" (normally main).
+3. Keep Gear/ItemDefinition IDs stable after publishing.
+4. For Studio tests, also enable "Keep local test data between Play sessions" in
+   View -> Data Inspector before starting Play. Otherwise Stop discards test saves.
 
-See ui-multi-selection.txt for shared Properties editing. This increment does not
-claim that all of the broader master expansion roadmap has been completed.
+The shared DataService saves item IDs, quantities and exact slot positions,
+including holes and separate stacks. It stores no character models or transient
+gear instance IDs. Saving remains opt-in and unchanged values cause no new writes.
+Existing version-1 aggregate saves load and migrate to the version-2 ordered form.
+Unknown items, corrupted saves and insufficient save capacity are rejected without
+overwriting the existing save or partly changing the inventory.
+
+Operator note: after version-2 inventory saves exist, downgrading the server to
+0.14.3 cannot read those ordered saves. Retain a compatible engine for subsequent
+rollbacks; never rewind live player data merely to downgrade an executable.
