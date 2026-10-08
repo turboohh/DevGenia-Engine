@@ -1,41 +1,41 @@
 {
-  "version": "0.14.1",
+  "version": "0.14.2",
   "archiveDate": "2026-10-08",
-  "originalPublicationTimestamp": "2026-10-05T15:43:40.872419600Z",
+  "originalPublicationTimestamp": "2026-10-05T22:42:18.232492300Z",
   "originalSignedManifest": true,
-  "installerSHA256": "df7af149cdaeecd564ba3053266250f75b8c4fb1e24e1b2bfe7c90b0f2308e7e",
+  "installerSHA256": "3a68416295a031f9f65f898e46eec81370d0adcd305858099bf315ea01252230",
   "assetKind": "installer",
-  "primaryAsset": "DevGeniaSetup-0.14.1.exe",
-  "primarySHA256": "df7af149cdaeecd564ba3053266250f75b8c4fb1e24e1b2bfe7c90b0f2308e7e",
+  "primaryAsset": "DevGeniaSetup-0.14.2.exe",
+  "primarySHA256": "3a68416295a031f9f65f898e46eec81370d0adcd305858099bf315ea01252230",
   "archiveStatus": "preserved public release",
   "historicalOnly": false,
   "availabilityNote": "",
   "sourceSnapshot": "not included in this archive tag; preserved binary and release metadata only",
   "assets": [
     {
-      "name": "DevGeniaSetup-0.14.1.exe",
-      "bytes": 41698090,
-      "sha256": "df7af149cdaeecd564ba3053266250f75b8c4fb1e24e1b2bfe7c90b0f2308e7e"
+      "name": "DevGeniaSetup-0.14.2.exe",
+      "bytes": 41707377,
+      "sha256": "3a68416295a031f9f65f898e46eec81370d0adcd305858099bf315ea01252230"
     },
     {
-      "name": "release-0.14.1.txt",
-      "bytes": 1485,
-      "sha256": "cf6b2b6ffc60ed93d7f303ae8e9b4601e2cb3decc6eba336467762db7418319e"
+      "name": "release-0.14.2.txt",
+      "bytes": 1449,
+      "sha256": "079169e3f74b3cc4cd9b7f82d558a165d8125908d0ce8053d7097e7b69a52cb9"
     },
     {
       "name": "release.manifest",
       "bytes": 245,
-      "sha256": "ab83340c4b59ec0120da12d21b2784f0d864914254caf95e7d60de2bd635bd6c"
+      "sha256": "d1f0cb212236eefe53955dc3d3c012809bc9bbd6296ebee0456ea35b0f3b6699"
     },
     {
       "name": "release.manifest.sig",
       "bytes": 88,
-      "sha256": "c9b2dfc3af897b5e57ffc2a26308df6dfb4d2293eb4aa8e477a1e1f72c0f4af5"
+      "sha256": "88b5c8c7a4dde6c1fe5188de6ba80e83eb3dc3c419f202ff25f9a6adae41b9aa"
     },
     {
       "name": "SHA256SUMS",
       "bytes": 440,
-      "sha256": "7d4f70c4a35ca4e6f2bc5ea04851426c077a4d3b6034399cd10aa8300c77d06d"
+      "sha256": "c2e8c76724cdb5e93e1bd1327fecd3e7c828f9d09eb68e8e5f321f4c16fb323c"
     },
     {
       "name": "trusted-public-key.txt",

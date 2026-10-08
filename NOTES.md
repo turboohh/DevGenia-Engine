@@ -1,25 +1,24 @@
-DevGenia 0.14.1 — Readable UI text
+DevGenia 0.14.2 — Playtest and interface polish
 
-Select a text UI instance and use Properties > Text shadow / Text border.
-Configure shadow color, transparency and horizontal/vertical offset; configure
-border color, transparency and thickness. A thickness of zero disables borders.
-Existing projects retain their appearance until an effect is enabled.
+Proximity prompts are cleared immediately when a Studio playtest ends. Their
+fade, hold progress and world anchor are reset before the editor resumes. Moving
+out of range during gameplay still uses the normal fade animation. Switching
+local scenes also clears the previous scene's transient interaction UI.
 
-Effects follow the letters, including wrapped text, dialogue speakers, progress
-percentages, buttons and editable textboxes. Text transparency fades the text
-and its effects together; parent opacity is inherited. Background transparency
-continues to affect only the background. Studio, Player and the browser renderer
-use the same saved properties. See ui-text-effects.txt for scripting examples.
+The generated Hotbar uses smaller, translucent blue/teal slots and a mint active
+indicator. Slot count, top/bottom positioning, keyboard selection, mouse clicks
+and ordinary UI customization remain available through the existing systems.
 
-Projects using these properties require project format 11. Older projects still
-open normally. New LAN sessions require matching 0.14.1 clients; HTTP clients
-negotiate supported protocol versions and reject unsupported project features
-instead of dropping them silently. The Player can still join existing hosted
-games using the current production server.
+Chat chrome fades away when idle while received messages remain visible. Moving
+the pointer over chat, typing or using its controls restores the panel. Message
+text retains contrast over the world; the fade does not discard chat history.
 
-This release updates the Windows installation and its signed download feed.
-The hosted platform engine is a separate deployment: new-format projects and
-browser-side features require that engine upgrade before use on the live site.
+NPC look-at uses the actual forward direction and a rigid rotation around the
+body root, preserving its position and vertical height. Very close overlapping
+targets do not repeatedly flip its heading. This fixes rear-target oscillation
+and vertical movement caused by looking from tilted/nested models.
 
-Save projects and close Studio/Player before applying an update. Your projects,
-edited examples and separate user/account settings are preserved by Setup.
+This desktop update includes Studio and Player and preserves existing projects
+and user data. The live platform engine remains a separate deployment; existing
+hosted games can still be joined, while newer authored systems require the
+corresponding hosted-engine upgrade for online publication and execution.
